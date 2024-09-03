@@ -1,0 +1,480 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --background-color: #ecf0f1;
+    --text-color: #34495e;
+    --border-color: #bdc3c7;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+nav {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover, nav a.active {
+    background-color: var(--primary-color);
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    display: none;
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+section.active {
+    display: block;
+}
+
+h2 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+#current-time {
+    text-align: right;
+    font-size: 0.9em;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+input, select, button, textarea {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Nunito', sans-serif;
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--secondary-color);
+    color: white;
+    white-space: nowrap;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 1rem auto;
+}
+
+#searchInput, #searchComprobantes {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+/* ... (continuación del CSS anterior) ... */
+
+.search-suggestions.active {
+    display: block;
+}
+
+.search-suggestions div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-suggestions div:hover {
+    background-color: #f0f0f0;
+}
+
+mark {
+    background-color: yellow;
+    padding: 0 2px;
+}
+
+.filter-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+#fileInput {
+    margin-bottom: 1rem;
+}
+
+#confirmarCompra, #generarPresupuesto {
+    background-color: var(--success-color);
+    margin-top: 1rem;
+}
+
+#confirmarCompra:hover, #generarPresupuesto:hover {
+    background-color: #27ae60;
+}
+
+#descargarExcel {
+    background-color: var(--warning-color);
+    margin-top: 1rem;
+}
+
+#descargarExcel:hover {
+    background-color: #f1c40f;
+}
+
+.eliminarDelCarrito {
+    background-color: var(--danger-color);
+}
+
+.eliminarDelCarrito:hover {
+    background-color: #c0392b;
+}
+
+.agregarCarrito {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.agregarCarrito:hover {
+    color: var(--secondary-color);
+}
+
+.cantidadInput {
+    width: 80px;
+    max-width: 100%;
+}
+
+#resultadosBusqueda tbody tr:hover {
+    background-color: rgba(52, 152, 219, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.total-label {
+    text-align: right;
+    font-weight: bold;
+    padding-right: 10px;
+    font-size: 1.4em;
+    color: var(--secondary-color);
+}
+
+.total-amount {
+    font-weight: bold;
+    font-size: 1.4em;
+    color: var(--secondary-color);
+}
+
+#descuentoGlobal {
+    width: 80px;
+    text-align: right;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 5px;
+    text-align: center;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+    font-size: 1.2em;
+    color: var(--secondary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.pagination-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pagination-buttons button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination-buttons button:hover {
+    background-color: #2980b9;
+}
+
+.pagination-buttons button.active {
+    background-color: var(--secondary-color);
+}
+
+.pagination-buttons button:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+}
+
+#totalProductos {
+    font-weight: bold;
+}
+
+.carrito-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.whatsapp-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#whatsappNumber {
+    width: 150px;
+}
+
+#enviarWhatsapp {
+    background-color: #25D366;
+}
+
+#enviarWhatsapp:hover {
+    background-color: #128C7E;
+}
+
+#totalProductosInventario {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+#confirmModal .modal-content {
+    text-align: left;
+}
+
+#confirmModal input,
+#confirmModal select,
+#confirmModal textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#confirmModal button {
+    margin-right: 1rem;
+}
+
+.uppercase-input {
+    text-transform: uppercase;
+}
+
+#loginForm {
+    max-width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#loginForm h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#loginForm input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+#loginForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#loginForm button:hover {
+    background-color: #2980b9;
+}
+
+/* Estilos para la nueva sección de comprobantes */
+#comprobantesTable .actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+#comprobantesTable .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+#comprobantesTable .actions button:hover {
+    color: var(--secondary-color);
+}
+
+#comprobanteModal .modal-content {
+    max-width: 800px;
+}
+
+#comprobanteDetails {
+    margin-bottom: 1rem;
+}
+
+#comprobanteState {
+    margin-bottom: 1rem;
+}
+
+#comprobanteProductosTable {
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+    
+    nav li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .search-container, .filter-container, .carrito-actions {
+        flex-direction: column;
+    }
+    
+    input, select, button {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .whatsapp-container {
+        flex-direction: column;
+    }
+
+    #whatsappNumber {
+        width: 100%;
+    }
+}
